@@ -139,7 +139,7 @@
         /* Hero */
         
         .hero {
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0)), 
+    background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), 
                 url('ava.png') center/cover no-repeat;
     height: 100vh;
     display: flex;
@@ -339,23 +339,20 @@
 .survey-wrapper {
         position: relative;
         width: 100%;
-        height: 0;
-        padding-bottom: 1500px; /* Начальная высота */
-        overflow: hidden;
+        height: 600px; /* Фиксированная начальная высота */
+        overflow: auto;
+        -webkit-overflow-scrolling: touch; /* Для плавного скролла на iOS */
         border-radius: 10px;
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         background: white;
     }
     
     .survey-iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
         width: 100%;
         height: 100%;
         border: none;
-    }
-    
+        min-height: 600px; /* Минимальная высота */
+    }    
     /* Убираем лишние отступы у формы */
     .survey-iframe body {
         margin: 0;
@@ -541,6 +538,21 @@
             .sub-items {
                 margin-left: 15px;
             }
+.survey-wrapper {
+            height: 500px;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .survey-iframe {
+            min-height: 500px;
+            overflow: auto;
+        }
+        
+        /* Фикс для iOS */
+        .survey-iframe body {
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+        }
         }
     </style>
 </head>
@@ -595,7 +607,7 @@
             <div class="info-item">
                 <div class="info-number">3</div>
                 <div class="info-content">
-                    <p>В доме не ходим в уличной обуви (можете принести тапочки)</p>
+                    <p>Праздник будет проходить в загородном доме. В помещении не ходим в уличной обуви (можете принести тапочки)</p>
                 </div>
             </div>
         </div>
@@ -666,16 +678,18 @@
             <p>Помогите нам сделать праздник еще лучше, указав ваши предпочтения</p>
         </div>
         <div class="survey-wrapper">
-            <iframe class="survey-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLSenagWyhSohfK5HVxzaeeeSF9-9dhquF25GwR2iYLEJBzhPAw/viewform?embedded=true" 
+            <iframe class="survey-iframe" 
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSenagWyhSohfK5HVxzaeeeSF9-9dhquF25GwR2iYLEJBzhPAw/viewform?embedded=true&usp=pp_url&hl=ru" 
                     frameborder="0" 
                     marginheight="0" 
-                    marginwidth="0">
+                    marginwidth="0"
+                    allowtransparency="true"
+                    scrolling="yes">
                 Загрузка…
             </iframe>
         </div>
     </div>
 </section>
-
 <!-- Contacts Section -->
 <section id="contacts" class="contacts">
     <div class="container">
