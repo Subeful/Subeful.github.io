@@ -137,53 +137,68 @@
         }
 
         /* Hero */
+        
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0)), 
                 url('ava.png') center/cover no-repeat;
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Распределяем пространство между элементами */
+    text-align: center;
+    color: white;
+    position: relative;
+    padding: 60px 0; /* Добавляем отступы сверху и снизу */
+}
 
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
+.hero-content {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 25px;
-            animation: fadeInUp 1s ease;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
+.hero h1 {
+    font-size: 3.5rem;
+    margin-top: 2vh; /* Фиксированный отступ сверху */
+    margin-bottom: 0;
+    animation: fadeInUp 1s ease;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
 
-        .hero p {
-            font-size: 1.7rem; /* Увеличен подзаголовок */
-            margin-bottom: 35px;
-            animation: fadeInUp 1s ease 0.2s forwards;
-            opacity: 0;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-        }
+.hero p {
+    font-size: 1.7rem;
+    margin-top: auto; /* Прижимаем к низу */
+    margin-bottom: 3vh; /* Фиксированный отступ снизу */
+    animation: fadeInUp 1s ease 0.2s forwards;
+    opacity: 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
 
-        .btn {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.2rem; /* Увеличен текст кнопки */
-            transition: all 0.3s;
-            border: 2px solid var(--primary);
-            animation: fadeInUp 1s ease 0.4s forwards;
-            opacity: 0;
-        }
+.btn {
+    position: absolute;
+    bottom: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+    border: 2px solid var(--primary);
+    animation: fadeInUp 1s ease 0.4s forwards;
+    opacity: 0;
+}
+
+
+    
 
         .btn:hover {
             background: transparent;
@@ -321,6 +336,31 @@
         .survey {
             background-color: var(--gray);
         }
+.survey-wrapper {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 1500px; /* Начальная высота */
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        background: white;
+    }
+    
+    .survey-iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+    
+    /* Убираем лишние отступы у формы */
+    .survey-iframe body {
+        margin: 0;
+        padding: 0;
+    }
 
         .survey-container {
             position: relative;
@@ -329,15 +369,7 @@
             padding-bottom: 1200px;
             height: 0;
         }
-        
-        .survey-iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+
         
         .survey-container iframe {
             margin-bottom: -5px;
@@ -422,14 +454,25 @@
                 display: none;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.4rem;
-            }
-
+          .hero {
+        padding: 40px 0;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-top: 10vh;
+    }
+    
+    .hero p {
+        font-size: 1.4rem;
+        margin-bottom: 10vh;
+    }
+    
+    .btn {
+        bottom: 8vh;
+        font-size: 1.1rem;
+        padding: 12px 30px;
+    }
             .section-title h2 {
                 font-size: 2.2rem;
             }
@@ -511,9 +554,8 @@
 <section class="hero">
     <div class="hero-content">
         <h1>Запланирован самый грандиозный праздник</h1>
-        <p>Празднуем 50 лет с Андреем!
- 	Подготовка к незабываемому дню</p>
-        <a href="#survey" class="btn">Участвовать в опросе</a>
+        <p>Празднуем 50 лет с Андреем! Подготовка к незабываемому дню</p>
+
     </div>
 </section>
 
@@ -529,14 +571,14 @@
             <div class="info-item">
                 <div class="info-number">1</div>
                 <div class="info-content">
-                    <p>Форма одежды - нарядная. Присутствие синего цвета желательно но не обязательно</p>
+                    <p>Форма одежды - нарядная. Присутствие синего цвета желательно, но не обязательно</p>
                 </div>
             </div>
             
             <div class="info-item">
                 <div class="info-number">2</div>
                 <div class="info-content">
-                    <p>принести с собой хорошее настроение</p>
+                    <p>Принести с собой хорошее настроение</p>
                 </div>
             </div>
             
@@ -613,8 +655,14 @@
             <h2>Опрос о напитках</h2>
             <p>Помогите нам сделать праздник еще лучше, указав ваши предпочтения</p>
         </div>
-        <div class="survey-container">
-            <iframe class="survey-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLSenagWyhSohfK5HVxzaeeeSF9-9dhquF25GwR2iYLEJBzhPAw/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Загрузка…</iframe>
+        <div class="survey-wrapper">
+            <iframe class="survey-iframe" src="https://docs.google.com/forms/d/e/1FAIpQLSenagWyhSohfK5HVxzaeeeSF9-9dhquF25GwR2iYLEJBzhPAw/viewform?embedded=true" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0"
+                    scrolling="no">
+                Загрузка…
+            </iframe>
         </div>
     </div>
 </section>
@@ -632,7 +680,7 @@
                 <h3>Контактная информация</h3>
                 <p><strong>Телефон:</strong> +7 (902) 666-99-97 (Андрей)</p>
                 <p><strong>Телефон:</strong> +7 (917) 075-11-96 (Наталья)</p>
-                <p><strong>Адрес:</strong> п. Озёрный Волнова 12</p>
+                <p><strong>Адрес:</strong> п. Озёрный, ул. Волкова, д. 12</p>
             </div>
         </div>
     </div>
@@ -647,38 +695,55 @@
 </footer>
 
 <script>
-    // Скрипт для динамической регулировки высоты iframe
-    window.addEventListener('message', function(event) {
-        if (event.origin !== "https://docs.google.com") return;
-        
-        try {
-            const data = JSON.parse(event.data);
-            if (data[0] === 'gform' && data[1] === 'heightChange') {
-                const surveyContainer = document.querySelector('.survey-container');
-                surveyContainer.style.paddingBottom = data[2] + 'px';
-            }
-        } catch (e) {
-            console.log(e);
-        }
-    });
-
-    // Альтернативный вариант, если первый не сработает
-    function adjustIframeHeight() {
+    // Обновленный скрипт для динамической подстройки высоты
+    document.addEventListener('DOMContentLoaded', function() {
         const iframe = document.querySelector('.survey-iframe');
-        const container = document.querySelector('.survey-container');
+        const wrapper = document.querySelector('.survey-wrapper');
         
-        // Устанавливаем минимальную высоту
-        let newHeight = Math.max(1200, iframe.contentWindow.document.body.scrollHeight);
-        container.style.paddingBottom = newHeight + 'px';
+        function resizeIframe() {
+            try {
+                // Пытаемся получить высоту содержимого iframe
+                const height = iframe.contentWindow.document.body.scrollHeight;
+                
+                // Устанавливаем новую высоту с небольшим запасом
+                wrapper.style.paddingBottom = (height + 50) + 'px';
+                
+                // Если форма еще не загрузилась, проверяем снова через 500мс
+                if (height < 100) {
+                    setTimeout(resizeIframe, 500);
+                }
+            } catch (e) {
+                console.log('Ошибка при определении высоты формы:', e);
+                // Если возникла ошибка, проверяем снова через 500мс
+                setTimeout(resizeIframe, 500);
+            }
+        }
         
-        // Повторяем проверку через секунду на случай динамической загрузки
-        setTimeout(adjustIframeHeight, 1000);
-    }
-    
-    // Запускаем после загрузки iframe
-    document.querySelector('.survey-iframe').onload = function() {
-        setTimeout(adjustIframeHeight, 2000);
-    };
+        // Обработчик загрузки iframe
+        iframe.onload = function() {
+            resizeIframe();
+            
+            // Дополнительная проверка через 2 секунды на случай динамической загрузки
+            setTimeout(resizeIframe, 2000);
+        };
+        
+        // Также проверяем периодически на случай динамических изменений
+        setInterval(resizeIframe, 3000);
+        
+        // Обработчик сообщений от Google Forms
+        window.addEventListener('message', function(event) {
+            if (event.origin !== "https://docs.google.com") return;
+            
+            try {
+                const data = JSON.parse(event.data);
+                if (data[0] === 'gform' && data[1] === 'heightChange') {
+                    wrapper.style.paddingBottom = (data[2] + 50) + 'px';
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        });
+    });
 </script>
 </body>
 </html>
